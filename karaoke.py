@@ -7,22 +7,13 @@ from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
  
-            
-def new_list(archivo):
-    parser = make_parser()
-    cHandler = SmallSMILHandler()
-    parser.setContentHandler(cHandler)
-    parser.parse(archivo)
-    list=cHandler.get_tags()
-    return list       
-
 def pass_list(lista):
     linea = ""
     for elemento in lista:
         linea = linea + elemento[0]
-        atr= elemento[1].dato()
-        for name, atributo in atr:
-            linea = linea + '\t' + name + ' = ' + '"' + atributo + '"'
+        atr= elemento[1]
+        for name in atr:
+            linea = linea + '\t' + name + ' = ' + '"' + atr.get(name) + '"'
         linea = linea + '\n'
 
     print (linea)
@@ -41,14 +32,10 @@ if __name__=="__main__":
     cHandler = SmallSMILHandler()
     parser.setContentHandler(cHandler)
     parser.parse(fichero)
-    print(cHandler.get_tags())
-    lista = new_list(fichero)
-    pass_lista(lista)
-    archivo_json = open('karaoke.json', 'w') 
-    json.dump(lista,archivo_json, sort_keys =True, indent=4, separators=(' ',': '))
-    archivo_json.close()
-
-    
+    open_file()
+    lista= cHandler.get_tags()
+    pass_list(lista)
+ 
 
     
 
