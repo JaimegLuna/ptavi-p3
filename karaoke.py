@@ -34,7 +34,6 @@ def open_file():
         sys.exit("Usage: python3 karaoke.py file.smil")
 
 if __name__=="__main__":
-
     fichero = open_file()
     parser = make_parser()
     cHandler = SmallSMILHandler()
