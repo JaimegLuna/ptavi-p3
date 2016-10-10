@@ -35,6 +35,10 @@ if __name__=="__main__":
     open_file()
     lista= cHandler.get_tags()
     pass_list(lista)
+    archivo_json = open('karaoke.json', 'w') 
+    json.dump(lista,archivo_json, sort_keys =True, indent=4, separators=(' ',': '))
+    archivo_json.close()
+
  
 
     
