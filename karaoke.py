@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import json 
 from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
@@ -33,6 +34,7 @@ def open_file():
     except IndexError:  
         sys.exit("Usage: python3 karaoke.py file.smil")
 
+
 if __name__=="__main__":
     fichero = open_file()
     parser = make_parser()
@@ -42,6 +44,11 @@ if __name__=="__main__":
     print(cHandler.get_tags())
     lista = new_list(fichero)
     pass_lista(lista)
+    archivo_json = open('karaoke.json', 'w') 
+    json.dump(lista,archivo_json, sort_keys =True, indent=4, separators=(' ',': '))
+    archivo_json.close()
+
+    
 
     
 
