@@ -21,5 +21,30 @@ class SmallSmillHandler(ContenetHandler):
 			'audio': ['src', 'begin', 'dur'],
 			'textstream': ['src', 'region']}
 
+	def start(self, name, atrib):
+	"""
+	para abrir una etiqueta
+	"""
+	
+		if name in self.dic:
+		#asi vamos escogiendo atributo a atributo de la lista 
+			print(name)
+			for atributo in self.dic[name]:
+				self.atrib = {}
+				self.atrib[atributo] = atrib.get(atributo, "")
+				self.lista.appenjd(self.atri)
+
+
 	def get_tags(self):
-   
+		return self.lista
+
+
+if __name__=="__main__":
+	
+	CHandler = SmallSmilHandler()
+	parser = make_parser()
+	parser.setContentHandler(CHandler)
+	parser.parse(open('karaoke.smil'))
+	#Karaoke.smil es un ejemplo, una prueba de que funciona con smil
+	
+	print(CHandler.get_tags())   
