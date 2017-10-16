@@ -8,6 +8,8 @@ from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+# No se como solucionar el problema que me da el pep8 (error w191 "Identation contains tabs)
+
 
 class KaraokeLocal(SmallSMILHandler):
 	def __init__(self, fichero):
