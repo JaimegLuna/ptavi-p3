@@ -8,6 +8,7 @@ from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+
 class KaraokeLocal(SmallSMILHandler):
 	def __init__(self, fichero):
 		parser = make_parser()
@@ -41,7 +42,7 @@ class KaraokeLocal(SmallSMILHandler):
 		print(doc)
 		return(doc)
 	
-	def to_json(self, fichero):
+	def to_json(self, fich):
 		archivo_json = open('Karaoke.json', 'w')
 		json.dump(lista, archivo_json, sort_keys =True, indent=4, separators = (' ',': '))
 		archivo_json.close()
@@ -49,4 +50,17 @@ class KaraokeLocal(SmallSMILHandler):
 	
 
 if __name__"__main__":
+	try:
+		fichero = aya.argv[1]
+		Fich = KaraokeLocal(fichero)
+	except:
+		sys.exit("Usage: python3 karaoke.py file smil")
+	Fich_json = sys.argv[1][:-5] +".json"
+	Fich.__str__()
+	Fich.to_json(Fich_json)
+	fich.do_local()
+	fich.to_json(Fich_json, "local.json")
+	fich.__str__()
+	
+		
 
